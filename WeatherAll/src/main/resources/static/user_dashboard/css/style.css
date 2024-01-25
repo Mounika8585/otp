@@ -1,0 +1,67 @@
+/* Custom Dropdown */
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+   }
+   
+   .custom-dropdown select {
+    background-color: #f1f1f1;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 8px 16px;
+    appearance: none;
+    width: 100%;
+   }
+   
+   .custom-dropdown select::-ms-expand {
+    display: none;
+   }
+   
+   .custom-dropdown:hover {
+    background-color: #e1e1e1;
+   }
+   
+   .custom-dropdown:hover .dropdown-icon {
+    border-left: 1px solid #b5b5b5;
+   }
+   
+   .dropdown-icon {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 8px 16px;
+    border-left: 1px solid #e5e5e5;
+    transform: translateY(-50%);
+    cursor: pointer;
+   }
+   
+   /* Weather Container */
+   .weather-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 30px 0;
+   }
+   
+   .weather-box {
+    width: 25%;
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-bottom: 20px;
+   }
+   
+   .weather-box img {
+    width: 50px;
+    height: 50px;
+   }
+   
+   .weather-box p {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+   }
+
+   

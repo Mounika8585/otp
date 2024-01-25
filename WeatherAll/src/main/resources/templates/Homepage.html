@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Box</title>
+   
+  <!-- <link rel="stylesheet" href="/css/Homepage.css"> -->
+  <STYLE>
+  		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    background-image: url('/Homepage/images/bgimage1.jpg'); /* Replace 'your-image.jpg' with the path to your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust the last value (alpha) for transparency */
+    font-family: 'Arial', sans-serif;
+}
+
+/* navbar styling */
+/* Basic reset for margin and padding */
+body, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar styles */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: rgba(128, 112, 112, 0.7); /* Use rgba for transparency */
+
+    background-color: rgba(10, 9, 9, 0.4);
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .logo a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 24px;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Ensuring text inherits color */
+  }
+  
+  .logo-text {
+    margin-left: 10px; /* Adjust spacing between text and image */
+  }
+  
+  .logo-image {
+    max-width: 100px; /* Adjust the width of the logo image */
+    height: auto; /* Maintain aspect ratio */
+  }
+  
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-right: 20px;
+  }
+  
+  .nav-links li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .auth-buttons {
+    display: flex;
+  }
+  
+  .login-btn,
+  .signup-btn {
+    margin-left: 20px;
+    padding: 8px 16px;
+    border: 1px solid white;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.6s, color 0.3s;
+  }
+  
+  .login-btn:hover {
+    background-color: rgb(18, 108, 226);
+    color: #ffffff;
+    
+  }
+  
+  .signup-btn:hover {
+    background-color: rgb(0, 128, 0);
+    color: #ffffff;
+    
+  }
+  
+/* nav bar styling end */  
+
+
+/* Drop down styling */ 
+.search-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .dropdown-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  #label1 {
+    margin-bottom: 8px;
+    text-align: center;
+    font-size: 20px;
+    color: black;
+    font-weight: bold; /* Making text bold */
+    font-family: Arial, sans-serif; /* Change font family if needed */
+  }
+
+  /* search dropdown style */
+
+  #searchDropdown {
+    background-color: rgba(70, 5, 5, 0.973);
+    padding: 8px;
+    border: 2px solid #f7f4f4;
+    border-radius: 4px;
+    font-weight: bold;
+    width: 200px;
+    font-size: 18px;
+    color: white;
+    font-family: Courier
+  }
+
+  #searchDropdown option{
+    text-align: center;
+    font-weight: bold;
+    color: white;
+  }
+  
+  #searchDropdown option:hover {
+    background-color: lightblue;
+    color: white;
+  }
+  
+  .dropdown-icon {
+    pointer-events: none;
+    margin-left: 8px;
+  }
+  /* search drop down style */
+  
+  
+/* dropdown styling end */  
+
+.logo-container {
+    position: fixed;
+    top: 5px;
+    left: 30px;
+    z-index: 1000; /* Set a high z-index to ensure it's on top of other elements */
+}
+
+.logo-container img {
+    width: 45px; /* Set the width of your logo */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 50%; /* Make the image round */
+    border: 2px solid #ffffff; /* Set the stroke color and width */
+    background-color: #007bff; /* Set the background color */
+    display: block; 
+}
+
+form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+.searchBox {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: #2f3640;
+    height: 40px;
+    border-radius: 40px;
+    padding: 10px;
+   
+}
+
+.searchBox:hover > .searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+    background: white;
+    color: #2f3640;
+}
+.searchBox:hover > .searchInput,
+.searchInput:focus,
+.searchInput:not(:placeholder-shown) {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchButton {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #2f3640;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s;
+   
+    
+}
+
+.searchButton img {
+    width: 20px; 
+    height: 20px;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    
+}
+
+
+.outer{
+	
+	margin-top : 120px;
+}
+.weather-info {
+	font-size: 18px;
+	font-weight: bold;
+	flex-basis: 100%;
+	text-align: center;
+	
+}
+
+.weather-container {
+  display: none; /* Hide the container by default */
+  flex-wrap: wrap; /* Allow boxes to wrap to the next line on smaller screens */
+  justify-content: space-around;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+}
+
+.pop-in {
+  transform: scale(0);
+  opacity: 0;
+  
+}
+
+@keyframes popIn {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.weather-box {
+  background-color: #ffffff;
+  border: 2px solid #080808;
+  border-radius: 10px;
+  padding: 0px;
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+  align-self: flex-start
+}
+
+.weather-box h2 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.weather-box p {
+  margin: 5px 0;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#weatherBox2 img {
+  max-width: 30%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weatherBox3 img {
+  max-width: 45%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weatherBox4 img {
+  max-width: 60%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+.weather-box img {
+  max-width: 25%;
+  height: auto;
+  margin-bottom: 5px;
+}
+  </STYLE>
+
+</head>
+
+<body>
+
+<!-- 
+    <div class="logo-container">
+        <img src="bg2m.png" alt="Your Logo">
+    </div>
+
+-->
+        <nav class="navbar">
+            <div class="logo">
+            
+                <div class="logo-container">
+                    
+                        <img src="/Homepage/images/Logo.png" alt="Your Logo" class="logo-image">
+                        <span class="logo-text">Weather Fable</span>
+                    </a>
+                </div>
+            </a>
+            </div>
+            
+            <div class="auth-buttons">
+            <a href="/login" class="login-btn">Login</a>
+            <a href="/signup" class="signup-btn">Sign Up</a>
+            </div>
+        </nav>
+
+
+<form>
+        <div class="search-container">
+        
+            <label id="label1" for="search">Select or Enter City:</label>
+            
+            <div class="custom-dropdown">
+                <select id="searchDropdown" name="q" onchange="updateSearchBar()">
+
+                    <option value="" disabled selected>Select a City</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="Hyderabad">Hyderabad</option>
+
+                </select>
+                <div class="dropdown-icon">&#9660;</div>
+            </div> 
+
+            
+
+            <div class="searchBox" id="searchBox">
+                <input class="searchInput" type="text" name="" placeholder="Search" onkeypress="handleKeyPress(event)">
+                <button class="searchButton" type="button" onclick="showWeatherData()">
+                    <img src="/Homepage/images/search.png" alt="Search Icon">
+                </button>
+            </div>
+
+        </div>
+
+       <!--  <button type="button" id="loginButton" onclick="redirectToLogin()">Login</button>
+        <button type="button" id="sign_up_Button" onclick="redirectToSignUp()">SignUp</button> -->
+
+</form>
+
+<div class="outer">
+<p class="weather-info" id="weather-info"></p>    
+     
+<div id="weatherContainer" class="weather-container">
+
+    <div class="weather-box" id="weatherBox1">
+        <h2>Temperature</h2>
+        <img src="/Homepage/images/temperature.png" alt="Temperature Image">
+        <p id="temperature-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox2">
+        <h2>Humidity</h2>
+        <img src="/Homepage/images/hum.png" alt="Temperature Image">
+        <p id="humidity-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox3">
+        <h2>WindSpeed</h2>
+        <img src="/Homepage/images/wind.png" alt="Temperature Image">
+        <p id="wind-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox4">
+        <h2>Cloudiness</h2>
+        <img src="/Homepage/images/clouds.png" alt="Temperature Image">
+        <p id="cloudiness-value"></p>
+    </div>
+    
+</div>
+</div>
+
+<!--  <script src="Homepage.js"  ></script>  -->
+
+<script>
+
+var searchBox = document.getElementById('searchBox');
+var searchInput = document.querySelector('.searchInput');
+var weatherContainer = document.getElementById('weatherContainer');
+
+function updateSearchBar() {
+    var selectedCity = document.getElementById('searchDropdown').value;
+    searchInput.value = selectedCity;
+    
+    
+}
+
+function redirectToLogin() {
+    window.location.href = "";
+}
+
+function redirectToSignUp() {
+    window.location.href = "";
+}
+
+function fetchApiConfig() {
+	
+        return fetch('/api/config')
+          .then(response => response.json())
+          .then(config => {
+    return {
+        apiKey: config.apiKey,
+        apiUrl: config.apiUrl
+    };
+});
+
+}
+ 
+function showWeatherData() {
+     var selectedCity = searchInput.value || document.getElementById('searchDropdown').value;
+
+    if (selectedCity) {
+// Fetch API key and URL from the Spring Boot REST controller
+
+fetchApiConfig()
+    .then(config => {
+        // Use the fetched API key and URL
+        var apiKey = config.apiKey;
+        var apiUrl = `${config.apiUrl}?q=${selectedCity}&appid=${apiKey}&units=metric`;
+
+        // Fetch weather data from OpenWeatherMap API
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+				
+				 if (data.cod === '404') {
+				
+				document.getElementById('weatherContainer').style.display = 'none'	 
+                document.getElementById('weather-info').innerText = 'City not found. Please try again.';
+            } 
+            
+            else {
+				
+				var weatherDescription = data.weather[0].description;
+				var weatherInfo = 'Weather in ' + selectedCity + ' - ' + weatherDescription;
+                var temperature = (data.main.temp).toFixed(0);
+                var humidity = data.main.humidity;
+                var windSpeed = (data.wind.speed).toFixed(1);
+                var cloudiness = data.clouds.all;
+                
+                // Update weather information in respective boxes
+                
+                document.getElementById('weather-info').innerText = weatherInfo;
+                document.getElementById('temperature-value').textContent = temperature + '°C';
+                document.getElementById('humidity-value').textContent = humidity + '%';
+                document.getElementById('wind-value').textContent = windSpeed + ' m/s';
+                document.getElementById('cloudiness-value').textContent = cloudiness + '%';
+
+                // Display weather data only if a city is selected or entered
+                weatherContainer.style.display = 'flex';
+                weatherContainer.classList.add('pop-in');
+                
+                }
+            })
+            
+    })
+    
+}
+else {
+// Optionally show an alert or handle the case where no city is selected or entered
+alert('Please select or enter a city.');
+}
+}
+
+function handleKeyPress(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        
+        showWeatherData();
+    }
+}
+
+
+</script> 
+
+</body>
+
+</html>

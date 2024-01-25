@@ -1,0 +1,1571 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Weather Fable</title>
+
+        <!-- CSS FILES -->        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+                        
+        <link href="/user_dashboard/css/bootstrap.min.css" rel="stylesheet">
+
+        <link href="/user_dashboard/css/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="/user_dashboard/css/templatemo-topic-listing.css" rel="stylesheet">   
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+       
+        <!-- CSS only -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- JavaScript Bundle with Popper -->
+
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+    
+
+-->
+<style>
+    .Fablelogo {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    }
+    
+    .Fablelogo2 {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border: 1px solid black; /* Add a 2px solid black border */
+}
+
+
+
+    .clothing-recommendations {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .clothing-recommendations img {
+            max-width: 100px;
+            height: auto;
+        }
+        .rhead {
+            margin-bottom: 40px;
+        }
+
+
+        .travellimg , .foodimg1 , .clothimg , .outdoorimg {
+    width: 98%;
+    height: 36.666vh; /* 1/6th of the viewport height */
+    display: block; /* Ensure the image behaves as a block element */
+    margin: 0 auto; /* Center the image horizontally */
+    margin-bottom: 30px;
+    object-fit: cover;/* Maintain image aspect ratio and cover the container */
+    }
+
+    .real-time-section {
+    text-align: center; /* Center-align the content within the section */
+    margin-bottom: 50px;
+}
+
+
+/* Style for travel recommendation divs */
+.travel1, .travel2, .travel3 , .clothing1 , .clothing2 ,.clothing3 , .food1 , .food2 , .food3 , .od1 , .od2 , .od3 , .od4 {
+    display: inline-block; /* Display divs in a single line */
+    width: calc(32% - 20px); /* Adjust width based on the number of items */
+    margin: 7px; /* Spacing between divs */
+    margin-left: 25px;
+    margin-bottom: 40px;
+    text-align: center; /* Center-align text */
+    border: 1px solid #ccc; /* Example border for clarity */
+    padding: 10px; /* Add padding for better appearance */
+}
+
+.real-time-section {
+    text-align: center; /* Center-align the content within the section */
+}
+
+/* Style for travel recommendation divs */
+        #dropdowni {
+            width: 45px;
+            /* border: 2px solid black; */
+            height: 45px;
+            font-size: 40px; /* Adjust the size as needed */
+            margin-bottom: 10px;
+        }
+
+        
+        .dropdown {
+               
+                position: relative;
+                display: inline-block;
+                margin-right: 80px; /* Adjust the left margin as needed */
+            }
+        
+           
+
+        .dropdown i {
+            font-size: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            padding: 10px;
+            cursor: pointer;
+        }
+       
+        .dropdown-menu {
+            font-size: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 8px;
+            margin-right: 80px;
+            display: none; /* Hide initially */
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-menu a {
+            color: #333;
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block; /* Show on hover */
+        }
+
+/* style changes */
+
+.form-control img {
+    width: 30px; 
+    height: 30px;
+    margin-left : 100px;
+}
+
+ #search-button {
+      /*   background-color: #000; Black background */
+        color: #000;
+      /* Decreased size */
+        border: none;
+        border-radius: 20px; /* Rounded edge */
+      /*  cursor: pointer;*/
+        padding: 10px 20px;
+        margin-bottom: 6px; /* Move slightly below */
+        
+        height: 50px;
+        width : 40px
+        
+   }
+.outer{
+	
+	margin-top : 70px;
+}
+.weather-info {
+	font-size: 18px;
+	font-weight: bold;
+	flex-basis: 100%;
+	text-align: center;
+	color : #000
+	
+}
+
+.weather-container {
+  display: none; /* Hide the container by default */
+  flex-wrap: wrap; /* Allow boxes to wrap to the next line on smaller screens */
+  justify-content: space-around;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+}
+
+.pop-in {
+  transform: scale(0);
+  opacity: 0;
+  
+}
+
+@keyframes popIn {
+  from {
+      transform: scale(0);
+      opacity: 0;
+  }
+  to {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.weather-box {
+  background-color: #ffffff;
+  border: 2px solid #080808;
+  border-radius: 10px;
+  padding: 0px;
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+  align-self: flex-start
+}
+
+.weather-box h2 {
+  font-size : 20px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.weather-box p {
+  margin: 5px 0;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#weatherBox2 img {
+  max-width: 30%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weatherBox3 img {
+  max-width: 45%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weatherBox4 img {
+  max-width: 60%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+.weather-box img {
+  max-width: 25%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+/* style changes */
+
+/*style for food cards */
+.outer1 , .outer3 , .outer4 {
+	
+	margin-top : 100px;
+}
+.weather-info1 , .weather-info3 , .weather-info4 {
+	font-size: 18px;
+	font-weight: bold;
+	flex-basis: 100%;
+	text-align: center;
+	
+}
+
+.weather-container1 ,.weather-container3 ,.weather-container4{
+  display: none; /* Hide the container by default */
+  flex-wrap: wrap; /* Allow boxes to wrap to the next line on smaller screens */
+  justify-content: space-around;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+}
+
+
+
+.weather-box1 ,.weather-box3, .weather-box4 {
+  background-color: #ffffff;
+  border: 2px solid #080808;
+  border-radius: 10px;
+  padding: 0px;
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+  align-self: flex-start
+}
+
+.weather-box1 h2 , .weather-box3 h2, .weather-box4 h2{
+  font-size : 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.weather-box1 p , .weather-box3 p ,.weather-box4 p {
+  margin: 5px 0;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#weather1Box1 img
+{
+  max-width: 70%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 450px;
+}
+#weather1Box2 img
+{
+ max-width: 75%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 450px;
+}
+
+#weather1Box3 img
+{
+ max-width: 75%; /* Make the image responsive */
+  height: 100px; /* Maintain the aspect ratio */
+  width: 450px;
+
+}
+/*===============================================*/
+#weather3Box1 img
+{
+ max-width: 55%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 300px;
+
+}
+
+#weather3Box2 img
+{
+ max-width: 30%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; 
+
+}
+#weather3Box3 img
+{
+  max-width: 45%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px;
+
+}
+
+#weather3Box4 img
+{
+ max-width: 60%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; 
+
+}
+/*============================================== */
+
+#weather4Box1 img {
+  max-width: 20%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weather4Box2 img {
+   max-width: 30%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px;  /* Adjust the width as needed */
+}
+
+ #weather4Box3 img {
+   max-width: 45%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+
+#weather4Box4 img {
+  max-width: 60%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 120px; /* Adjust the width as needed */
+}
+/* ============================================= */
+
+.weather-box1 img , .weather-box3 img ,.weather-box4 img {
+  max-width: 25%;
+  height: auto;
+  margin-bottom: 5px;
+}
+/*style for food cards */
+
+/*style for clothing cards */
+.outer2{
+	
+	margin-top : 120px;
+}
+.weather-info2 {
+	font-size: 18px;
+	font-weight: bold;
+	flex-basis: 100%;
+	text-align: center;
+	
+}
+
+.weather-container2 {
+  display: none; /* Hide the container by default */
+  flex-wrap: wrap; /* Allow boxes to wrap to the next line on smaller screens */
+  justify-content: space-around;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  animation: popIn 0.7s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+
+}
+
+
+
+.weather-box2 {
+  background-color: #ffffff;
+  border: 2px solid #080808;
+  border-radius: 10px;
+  padding: 0px;
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+  align-self: flex-start
+}
+
+.weather-box2 h2 {
+  font-size : 18px;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.weather-box2 p {
+  margin: 5px 0;
+  color: #000000;
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#weather2Box1 img {
+  max-width: 70%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 300px; /* Adjust the width as needed */
+}
+
+#weather2Box2 img {
+  max-width: 74%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 240px; /* Adjust the width as needed */
+}
+
+#weather2Box3 img {
+   max-width: 90%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 240px;/* Adjust the width as needed */
+}
+
+#weather2Box4 img {
+  max-width: 79%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 240px; /*Adjust the width as needed */
+}
+
+#weather2Box5 img {
+  max-width: 60%; /* Make the image responsive */
+  height: auto; /* Maintain the aspect ratio */
+  width: 130px; /* Adjust the width as needed */
+}
+
+.weather-box2 img {
+  max-width: 25%;
+  height: auto;
+  margin-bottom: 5px;
+}
+/*style for clothing cards */
+
+</style>
+    </head>
+    
+    <body id="top">
+
+        <main>
+
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <a class="navbar-brand" href="/user_dashboard">
+                      <!--  <i class="bi-back"></i> -->
+                      <img class = "Fablelogo" src="/user_dashboard/images/Logo.png" alt="Weather Fable Logo" width="40" height="40">
+                        <span>Weather Fable</span>
+                    </a>
+                    <!-- <a href="Homepage.html">
+                        <div class="logo-container">
+                            <a href="Homepage.html" class="logo-link">
+                                <img src="./images/Logo.png" alt="Your Logo" class="logo-image">
+                                <span class="logo-text">Weather Fable</span>
+                            </a> -->
+
+                    <div class="d-lg-none ms-auto me-4">
+                        <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                    </div>
+    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_1">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#about">About</a>
+                            </li>
+    
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_3">How it works</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+                            </li>
+    
+                            <!-- <li class="nav-item">
+                                <a class="nav-link click-scroll" href="#section_5">Contact</a>
+                            </li> -->
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarLightDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Recommendations</a>
+
+                                <ul class="dropdown-menu dropdown-menu-light" aria-labelledby="navbarLightDropdownMenuLink">
+                                    <li><a class="dropdown-item" href="#food">Food</a></li>
+                                    <li><a class="dropdown-item" href="#clothing">Clothing</a></li>
+                                    <li><a class="dropdown-item" href="#outdoor">Outdoor Activities</a></li>
+                                    <li><a class="dropdown-item" href="#travel">Travel & Commute</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                       <!-- <div class="d-none d-lg-block">
+                            <a href="#top" class="navbar-icon bi-person smoothscroll" id="profile-dropdown"></a>
+                            <div class="dropdown" id="profile-dropdown-menu">
+                                <div class="dropdown-menu" aria-labelledby="profile-dropdown">
+                                    <a class="dropdown-item" href="#user-profile">User Profile</a>
+                                    <a class="dropdown-item" href="#switch-account">Switch Account</a>
+                                    <a class="dropdown-item" href="#api-calls">API Calls</a>
+                                    <a class="dropdown-item" href="#recent-locations">Recent Locations</a>
+                                    <a class="dropdown-item" href="#settings">Settings & Preferences</a>
+                                    <a class="dropdown-item" href="#sign-out">Sign Out</a>
+                                    <a class="dropdown-item" href="#help-support">Help & Support</a>
+                                    <a class="dropdown-item" href="#feedback">Send Feedback</a>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="d-none d-lg-block">
+                            <div class="dropdown" id="dropdowni">
+                                <i class="fas fa-user-circle" id="dropdownMenuLink"></i> 
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" href="#user-profile">User Profile</a>
+                                    <a class="dropdown-item" href="#switch-account">Switch Account</a>
+                                    <a class="dropdown-item" href="#api-calls">API Calls</a>
+                                    <a class="dropdown-item" href="#recent-locations">Recent Locations</a>
+                                    <a class="dropdown-item" href="#settings">Settings & Preferences</a>
+                                    <a class="dropdown-item" href="#sign-out">Sign Out</a>
+                                    <a class="dropdown-item" href="#help-support">Help & Support</a>
+                                    <a class="dropdown-item" href="#feedback">Send Feedback</a>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                            
+                            <!-- <a href="#top" class="navbar-icon bi-person smoothscroll" id="profile-dropdown"></a>
+                            <div class="dropdown" id="profile-dropdown-menu" style="display: none;">
+                                <div class="dropdown-menu" aria-labelledby="profile-dropdown">
+                                    <a class="dropdown-item" href="#user-profile">User Profile</a>
+                                    <a class="dropdown-item" href="#switch-account">Switch Account</a>
+                                    <a class="dropdown-item" href="#api-calls">API Calls</a>
+                                    <a class="dropdown-item" href="#recent-locations">Recent Locations</a>
+                                    <a class="dropdown-item" href="#settings">Settings & Preferences</a>
+                                    <a class="dropdown-item" href="#sign-out">Sign Out</a>
+                                    <a class="dropdown-item" href="#help-support">Help & Support</a>
+                                    <a class="dropdown-item" href="#feedback">Send Feedback</a>
+                                </div>
+                            </div> --> 
+                        </div>
+
+                       
+                        <!-- <div class="d-none d-lg-block">
+                            <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+                        </div> -->
+                    </div>
+                </div>
+            </nav>
+            
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <h1 class="text-white text-center">Explore. Plan. Thrive.</h1>
+
+                            <h6 class="text-center">Personalized weather guidance platform</h6>
+
+                            <form method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bi-search" id="basic-addon1">
+                                        
+                                    </span>
+
+                                    <input name="keyword" type="search" class="form-control" id="keyword" placeholder="Enter the Location" aria-label="Search">
+                                    <input name="keyword1" type="search1" class="form-control1" id="keyword1" placeholder="Enter the State" aria-label="Search" style="border: none; outline: none;">
+							<!--  var searchInput = document.querySelector('.form-control'); 
+                                    <button type="submit" class="form-control">Search</button> , <img src="/images/search.png" alt="Search Icon"> -->
+                                    <button type="button" class="form-control" id = "search-button" onclick="showWeatherData()">Search</button>
+                                  	
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                      <div class="outer">
+<p class="weather-info" id="weather-info"></p>    
+     
+<div id="weatherContainer" class="weather-container">
+
+    <div class="weather-box" id="weatherBox1">
+        <h2>Temperature</h2>
+        <img src="/user_dashboard/images/temperature.png" alt="Temperature Image">
+        <p id="temperature-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox2">
+        <h2>Humidity</h2>
+        <img src="/user_dashboard/images/hum.png" alt="Temperature Image">
+        <p id="humidity-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox3">
+        <h2>WindSpeed</h2>
+        <img src="/user_dashboard/images/wind.png" alt="Temperature Image">
+        <p id="wind-value"></p>
+    </div>
+    
+    <div class="weather-box" id="weatherBox4">
+        <h2>Cloudiness</h2>
+        <img src="/user_dashboard/images/clouds.png" alt="Temperature Image">
+        <p id="cloudiness-value"></p>
+    </div>
+    
+</div>
+</div>
+                </div>
+                
+            </section>
+            
+            
+ <!-- changes  -->         
+
+<!-- changes  -->       
+
+
+            <!-- <section id="about" class="bg-light p-5">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8 mx-auto text-center">
+                      <h2 class="display-4">Welcome to Weather Fable</h2>
+                      <p class="lead">
+                        Weather Fable is your go-to platform for personalized weather insights and recommendations. Get real-time weather updates and tailored suggestions for clothing, food, travel, and outdoor activities based on current conditions.
+                      </p>
+                      <p>
+                        Join us and experience a seamless way to plan your day, staying ahead of changing weather conditions!
+                      </p>
+                      <a href="#signup" class="btn btn-primary btn-lg">Sign Up Now</a>
+                    </div>
+                  </div>
+                </div>
+              </section> -->
+
+
+              <!-- About 1 - Bootstrap Brain Component -->
+<section id="about" class="py-3 py-md-5">
+    <div class="container">
+      <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+        <div class="col-12 col-lg-6 col-xl-5">
+          <img class="img-fluid rounded" loading="lazy" src="/user_dashboard/images/storm-3158855_1280.jpg" alt="About 1">
+        </div>
+        <div class="col-12 col-lg-6 col-xl-7">
+          <div class="row justify-content-xl-center">
+            <div class="col-12 col-xl-11">
+              <h2 class="mb-3">Welcome to Weather Fable</h2>
+              <p class="lead fs-4 text-secondary mb-3">Weather Fable is your go-to platform for personalized weather insights and recommendations. Get real-time weather updates and tailored suggestions for clothing, food, travel, and outdoor activities based on current conditions.</p>
+              <p class="mb-5">Join us and experience a seamless way to plan your day, staying ahead of changing weather conditions!</p>
+              <div class="row gy-4 gy-md-0 gx-xxl-5X">
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                      </svg>
+                    </div>
+                    <div>
+                        <h2 class="h4 mb-3">Tailored Weather Experience</h2>
+                        <p class="text-secondary mb-0">We're shaping a personalized weather journey, designed for every aspect of your day.</p>
+                      </div>
+                      
+                  </div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-primary">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-fire" viewBox="0 0 16 16">
+                        <path d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
+                      </svg>
+                    </div>
+                    <div>
+                        <h2 class="h4 mb-3">Weather Fable</h2>
+                        <p class="text-secondary mb-0">Empowering your day with personalized weather insights and tailored recommendations.</p>
+                      </div>
+                      
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+              
+
+
+            <!-- <section class="featured-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+
+                        <div class="col-lg-4 col-12 mb-4 mb-lg-0">
+                            <div class="custom-block bg-white shadow-lg">
+                                <a href="topics-detail.html">
+                                    <div class="d-flex">
+                                        <div>
+                                            <h5 class="mb-2">Web Design</h5>
+
+                                            <p class="mb-0">When you search for free CSS templates, you will notice that TemplateMo is one of the best websites.</p>
+                                        </div>
+
+                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                    </div>
+
+                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-12">
+                            <div class="custom-block custom-block-overlay">
+                                <div class="d-flex flex-column h-100">
+                                    <img src="images/businesswoman-using-tablet-analysis.jpg" class="custom-block-image img-fluid" alt="">
+
+                                    <div class="custom-block-overlay-text d-flex">
+                                        <div>
+                                            <h5 class="text-white mb-2">Finance</h5>
+
+                                            <p class="text-white">Topic Listing Template includes homepage, listing page, detail page, and contact page. You can feel free to edit and adapt for your CMS requirements.</p>
+
+                                            <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                        </div>
+
+                                        <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                    </div>
+
+                                    <div class="social-share d-flex">
+                                        <p class="text-white me-4">Share:</p>
+
+                                        <ul class="social-icon">
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                            </li>
+
+                                            <li class="social-icon-item">
+                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                            </li>Designms-auto"></a>
+                                    </div>
+
+                                    <div class="section-overlay"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section> -->
+
+
+            <!-- <section class="explore-section section-padding" id="section_2">
+                <div class="container">
+
+                        <div class="col-12 text-center">
+                            <h2 class="mb-4">Browse Topics</h1> -->
+                        <!-- </div>
+
+                    </div>
+                </div>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button" role="tab" aria-controls="design-tab-pane" aria-selected="true">Design</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="marketing-tab" data-bs-toggle="tab" data-bs-target="#marketing-tab-pane" type="button" role="tab" aria-controls="marketing-tab-pane" aria-selected="false">Marketing</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="finance-tab" data-bs-toggle="tab" data-bs-target="#finance-tab-pane" type="button" role="tab" aria-controls="finance-tab-pane" aria-selected="false">Finance</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="music-tab" data-bs-toggle="tab" data-bs-target="#music-tab-pane" type="button" role="tab" aria-controls="music-tab-pane" aria-selected="false">Music</button>
+                            </li>
+
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="education-tab" data-bs-toggle="tab" data-bs-target="#education-tab-pane" type="button" role="tab" aria-controls="education-tab-pane" aria-selected="false">Education</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Web Design</h5>
+
+                                                            <p class="mb-0">Topic Listing Template based on Bootstrap 5</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">14</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Remote_design_team_re_urdx.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Graphic</h5>
+
+                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">75</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Redesign_feedback_re_jvm0.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Logo Design</h5>
+
+                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-design rounded-pill ms-auto">100</span>
+                                                    </div>
+
+                                                    <img src="images/topics/colleagues-working-cozy-office-medium-shot.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="marketing-tab-pane" role="tabpanel" aria-labelledby="marketing-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                    <a href="topics-detail.html">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2">Advertising</h5>
+
+                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            </div>
+
+                                                            <span class="badge bg-advertising rounded-pill ms-auto">30</span>
+                                                        </div>
+
+                                                        <img src="images/topics/undraw_online_ad_re_ol62.png" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                    <a href="topics-detail.html">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2">Video Content</h5>
+
+                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            </div>
+
+                                                            <span class="badge bg-advertising rounded-pill ms-auto">65</span>
+                                                        </div>
+
+                                                        <img src="images/topics/undraw_Group_video_re_btu7.png" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4 col-md-6 col-12">
+                                                <div class="custom-block bg-white shadow-lg">
+                                                    <a href="topics-detail.html">
+                                                        <div class="d-flex">
+                                                            <div>
+                                                                <h5 class="mb-2">Viral Tweet</h5>
+
+                                                                <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                            </div>
+
+                                                            <span class="badge bg-advertising rounded-pill ms-auto">50</span>
+                                                        </div>
+
+                                                        <img src="images/topics/undraw_viral_tweet_gndb.png" class="custom-block-image img-fluid" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                  </div>
+
+                                <div class="tab-pane fade" id="finance-tab-pane" role="tabpanel" aria-labelledby="finance-tab" tabindex="0">   <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-0">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Investment</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-finance rounded-pill ms-auto">30</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Finance_re_gnv2.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="custom-block custom-block-overlay">
+                                                <div class="d-flex flex-column h-100">
+                                                    <img src="images/businesswoman-using-tablet-analysis-graph-company-finance-strategy-statistics-success-concept-planning-future-office-room.jpg" class="custom-block-image img-fluid" alt="">
+
+                                                    <div class="custom-block-overlay-text d-flex">
+                                                        <div>
+                                                            <h5 class="text-white mb-2">Finance</h5>
+
+                                                            <p class="text-white">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint animi necessitatibus aperiam repudiandae nam omnis</p>
+
+                                                            <a href="topics-detail.html" class="btn custom-btn mt-2 mt-lg-3">Learn More</a>
+                                                        </div>
+
+                                                        <span class="badge bg-finance rounded-pill ms-auto">25</span>
+                                                    </div>
+
+                                                    <div class="social-share d-flex">
+                                                        <p class="text-white me-4">Share:</p>
+
+                                                        <ul class="social-icon">
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-twitter"></a>
+                                                            </li>
+
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-facebook"></a>
+                                                            </li>
+
+                                                            <li class="social-icon-item">
+                                                                <a href="#" class="social-icon-link bi-pinterest"></a>
+                                                            </li>
+                                                        </ul>
+
+                                                        <a href="#" class="custom-icon bi-bookmark ms-auto"></a>
+                                                    </div>
+
+                                                    <div class="section-overlay"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="music-tab-pane" role="tabpanel" aria-labelledby="music-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Composing Song</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Compose_music_re_wpiw.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Online Music</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-music rounded-pill ms-auto">45</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_happy_music_g6wc.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Podcast</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-music rounded-pill ms-auto">20</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Podcast_audience_re_4i5q.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="education-tab-pane" role="tabpanel" aria-labelledby="education-tab" tabindex="0">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-12 mb-4 mb-lg-3">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Graduation</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-education rounded-pill ms-auto">80</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Graduation_re_gthn.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="custom-block bg-white shadow-lg">
+                                                <a href="topics-detail.html">
+                                                    <div class="d-flex">
+                                                        <div>
+                                                            <h5 class="mb-2">Educator</h5>
+
+                                                            <p class="mb-0">Lorem Ipsum dolor sit amet consectetur</p>
+                                                        </div>
+
+                                                        <span class="badge bg-education rounded-pill ms-auto">75</span>
+                                                    </div>
+
+                                                    <img src="images/topics/undraw_Educator_re_ju47.png" class="custom-block-image img-fluid" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+            </section> -->
+
+
+            <section class="timeline-section section-padding" id="section_3">
+                <div class="section-overlay"></div>
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-12 text-center">
+                            <h2 class="text-white mb-4">How does it work?</h1>
+                        </div>
+
+                        <div class="col-lg-10 col-12 mx-auto">
+                            <div class="timeline-container">
+                                <ul class="vertical-scrollable-timeline" id="vertical-scrollable-timeline">
+                                    <div class="list-progress">
+                                        <div class="inner"></div>
+                                    </div>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Location-based Weather Insight</h4>
+
+                                        <p class="text-white">Users input their location to access real-time weather data through our intuitive interface. By simply entering the desired area, immediate weather details and forecasts become readily available, empowering informed decision-making for day-to-day plans.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-search"></i>
+                                        </div>
+                                    </li>
+                                    
+                                    <li>
+                                        <h4 class="text-white mb-3">Personalized Recommendations Post-Login</h4>
+
+                                        <p class="text-white">Upon logging in, users unlock a realm of personalized suggestions tailored to their preferences and the prevailing weather conditions. Recommendations encompass diverse aspects like food choices, suitable attire, optimal travel/commute options, and curated outdoor activities, ensuring users are well-prepared for any weather scenario.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-bookmark"></i>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <h4 class="text-white mb-3">Organized Livelihood Enhancement</h4>
+
+                                        <p class="text-white">By implementing the platform's tailored recommendations, users effectively streamline their routines and optimize their daily activities. This proactive approach fosters a more organized and efficient lifestyle, enabling users to adapt seamlessly to varying weather conditions, enhancing productivity, and overall satisfaction.</p>
+
+                                        <div class="icon-holder">
+                                          <i class="bi-book"></i>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-12 text-center mt-5">
+                            <p class="text-white">
+                                Want to learn more?
+                                <a href="#" class="btn custom-btn custom-border-btn ms-3">Check out Youtube</a>
+                            </p>
+                        </div> -->
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="faq-section section-padding" id="section_4">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-12">
+                            <h2 class="mb-4">Frequently Asked Questions</h2>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="col-lg-5 col-12">
+                            <img src="/user_dashboard/images/faq_graphic.jpg" class="img-fluid" alt="FAQs">
+                        </div>
+
+                        <div class="col-lg-6 col-12 m-auto">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            Is Weather Fable free to use?
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Yes, Weather Fable is entirely free to use. Our platform provides essential weather information and basic recommendations without any subscription fees.                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                            Are there any limitations or restrictions on API calls for Weather Fable users?
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            While Weather Fable offers its core services for free, there is a limited number of API calls available for each user. This limitation ensures fair usage and optimal performance for all users accessing our weather data through APIs.                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                            How does Weather Fable personalize recommendations based on current weather conditions?
+                                    </button>
+                                    </h2>
+
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Weather Fable uses real-time weather data to provide tailored suggestions for clothing, food, travel, and outdoor activities, ensuring recommendations align with prevailing weather conditions for optimized user experiences.                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- <section class="contact-section section-padding section-bg" id="section_5">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-12 text-center">
+                            <h2 class="mb-5">Get in touch</h2>
+                        </div>
+
+                        <div class="col-lg-5 col-12 mb-4 mb-lg-0">
+                            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-12 mb-3 mb-lg- mb-md-0 ms-auto">
+                            <h4 class="mb-3">Head office</h4>
+
+                            <p>Bay St &amp;, Larkin St, San Francisco, CA 94109, United States</p>
+
+                            <hr>
+
+                            <p class="d-flex align-items-center mb-1">
+                                <span class="me-2">Phone</span>
+
+                                <a href="tel: 305-240-9671" class="site-footer-link">
+                                    305-240-9671
+                                </a>
+                            </p>
+
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Email</span>
+
+                                <a href="mailto:info@company.com" class="site-footer-link">
+                                    info@company.com
+                                </a>
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 col-12 mx-auto">
+                            <h4 class="mb-3">Dubai office</h4>
+
+                            <p>Burj Park, Downtown Dubai, United Arab Emirates</p>
+
+                            <hr>
+
+                            <p class="d-flex align-items-center mb-1">
+                                <span class="me-2">Phone</span>
+
+                                <a href="tel: 110-220-3400" class="site-footer-link">
+                                    110-220-3400
+                                </a>
+                            </p>
+
+                            <p class="d-flex align-items-center">
+                                <span class="me-2">Email</span>
+
+                                <a href="mailto:info@company.com" class="site-footer-link">
+                                    info@company.com
+                                </a>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </section> -->
+
+           <section id="food" class="real-time-section">
+                <div class="container">
+                  <h2 class = "rhead">Food Recommendations</h2>
+                  <img class = "foodimg1" src="/user_dashboard/images/recommendations/foodimg1.png" alt="foodimg" >
+                   <div class="outer1">
+<p class="weather-info1" id="weather-info1"></p>    
+     
+<div id="weatherContainer1" class="weather-container1">
+
+    <div class="weather-box1" id="weather1Box1">
+        <h2>Vegetarian food</h2>
+        <img src="/user_dashboard/images/recommendations/1veg.jpg" alt="Temperature Image">
+        <p id="veg"></p>
+    </div>
+    
+    <div class="weather-box1" id="weather1Box2">
+        <h2>NonVeg food</h2>
+        <img src="/user_dashboard/images/recommendations/1nonveg.jpg" alt="Temperature Image">
+        <p id="nonveg"></p>
+    </div>
+    
+    <div class="weather-box1" id="weather1Box3">
+        <h2>Liquid food</h2>
+        <img src="/user_dashboard/images/recommendations/1liquid.jpg" alt="Temperature Image">
+        <p id="liquid"></p>
+    </div>
+    
+</div>
+</div>
+                </div>
+              </section>
+              
+              <section id="clothing" class="real-time-section">
+                <div class="container">
+                  <h2 class = "rhead">Clothing Suggestions</h2>
+                  <img class = "clothimg" src="/user_dashboard/images/recommendations/clothimg.jpg" alt="travellimg" >
+                   <div class="outer1">
+<p class="weather-info2" id="weather-info2"></p>    
+     
+<div id="weatherContainer2" class="weather-container2">
+
+    <div class="weather-box2" id="weather2Box1">
+        <h2>Tops</h2>
+        <img src="/user_dashboard/images/recommendations/2tops.jpg" alt="Temperature Image">
+        <p id="tops"></p>
+    </div>
+    
+    <div class="weather-box2" id="weather2Box2">
+        <h2>Bottom wear</h2>
+        <img src="/user_dashboard/images/recommendations/2bottom.jpg" alt="Temperature Image">
+        <p id="bottom"></p>
+    </div>
+    
+    <div class="weather-box2" id="weather2Box3">
+        <h2>Accessories</h2>
+        <img src="/user_dashboard/images/recommendations/2access.jpg" alt="Temperature Image">
+        <p id="accessories"></p>
+    </div>
+    
+    <div class="weather-box2" id="weather2Box4">
+        <h2>Footwear</h2>
+        <img src="/user_dashboard/images/recommendations/2footwear.jpg" alt="Temperature Image">
+        <p id="footwear"></p>
+    </div>
+    
+     <div class="weather-box2" id="weather2Box4">
+        <h2>Pullovers</h2>
+        <img src="/user_dashboard/images/recommendations/2pullover.jpg" alt="Temperature Image">
+        <p id="pullovers"></p>
+    </div>
+   
+    
+</div>
+</div>
+                </div>
+              </section>
+              
+              <section id="outdoor" class="real-time-section">
+                <div class="container">
+                  <h2 class = "rhead">Outdoor Activities</h2>
+                  <img class = "outdoorimg" src="/user_dashboard/images/recommendations/outdoorimg.png" alt="outdoorimg" >
+                  <div class="outer4">
+<p class="weather-info4" id="weather-info4"></p>    
+     
+<div id="weatherContainer4" class="weather-container4">
+
+    <div class="weather-box4" id="weather4Box1">
+        <h2>Highly Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/temperature.png" alt="Temperature Image">
+        <p id="out_h.reco"></p>
+    </div>
+    
+    <div class="weather-box4" id="weather4Box2">
+        <h2>Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/hum.png" alt="Temperature Image">
+        <p id="out_reco"></p>
+    </div>
+    
+    <div class="weather-box4" id="weather4Box3">
+        <h2>Limited</h2>
+        <img src="/user_dashboard/images/recommendations/wind.png" alt="Temperature Image">
+        <p id="out_limit"></p>
+    </div>
+    
+    <div class="weather-box4" id="weather4Box4">
+        <h2> Not Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/clouds.png" alt="Temperature Image">
+        <p id="out_notreco"></p>
+    </div>
+    
+</div>
+</div>
+                </div>
+              </section>
+              
+              <section id="travel" class="real-time-section">
+                <div class="container">
+                  <h2 class = "rhead">Travel / Commute Tips</h2>
+                  <img class = "travellimg" src="/user_dashboard/images/recommendations/travelimg.png" alt="travellimg" >
+                 <div class="outer3">
+<p class="weather-info3" id="weather-info3"></p>    
+     
+<div id="weatherContainer3" class="weather-container3">
+
+    <div class="weather-box3" id="weather3Box1">
+        <h2>Highly Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/3travel1.jpg" alt="Temperature Image">
+        <p id="travel_h.reco"></p>
+    </div>
+    
+    <div class="weather-box3" id="weather3Box2">
+        <h2>Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/hum.png" alt="Temperature Image">
+        <p id="travel_reco"></p>
+    </div>
+    
+    <div class="weather-box3" id="weather3Box3">
+        <h2>Limited</h2>
+        <img src="/user_dashboard/images/recommendations/wind.png" alt="Temperature Image">
+        <p id="travel_limit"></p>
+    </div>
+    
+    <div class="weather-box3" id="weather3Box4">
+        <h2> Not Recommended</h2>
+        <img src="/user_dashboard/images/recommendations/clouds.png" alt="Temperature Image">
+        <p id="travel_notreco"></p>
+    </div>
+    
+</div>
+</div>
+                </div>
+              </section>
+              
+              
+              
+        </main>
+
+<footer class="site-footer section-padding">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-3 col-12 mb-4 pb-2">
+                        <a class="navbar-brand mb-2" href="index.html">
+                            <img class = "Fablelogo2" src="/user_dashboard/images/Logo.png" alt="Weather Fable Logo" width="40" height="40">
+                            <span>Weather Fable</span>
+                        </a>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <h6 class="site-footer-title mb-3">Resources</h6>
+
+                        <ul class="site-footer-links">
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Home</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">How it works</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">FAQs</a>
+                            </li>
+
+                            <li class="site-footer-link-item">
+                                <a href="#" class="site-footer-link">Reccomendations</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">
+                        <h6 class="site-footer-title mb-3">Information</h6>
+
+                        <p class="text-white d-flex mb-1">
+                            <a href="tel: 305-240-9671" class="site-footer-link">
+                                305-240-9671
+                            </a>
+                        </p>
+
+                        <p class="text-white d-flex">
+                            <a href="mailto:info@company.com" class="site-footer-link">
+                                torryharris@company.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            English</button>
+
+                            <ul class="dropdown-menu">
+                                <li><button class="dropdown-item" type="button">Thai</button></li>
+
+                                <li><button class="dropdown-item" type="button">Myanmar</button></li>
+
+                                <li><button class="dropdown-item" type="button">Arabic</button></li>
+                            </ul>
+                        </div>
+
+                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Torry Harris. All rights reserved.
+                        <!-- <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a></p> -->
+                        
+                    </div>
+
+                </div>
+            </div>
+        </footer>
+
+
+        <!-- JAVASCRIPT FILES -->
+
+        <script src="/user_dashboard/js/jquery.min.js"></script>
+        <script src="/user_dashboard/js/bootstrap.bundle.min.js"></script>
+        <script src="/user_dashboard/js/jquery.sticky.js"></script>
+        <script src="/user_dashboard/js/click-scroll.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+        <script src="/user_dashboard/js/custom.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+ElP9KLmQL5Pw0+9r/JUmbGFGJ1jFQ484JwF/pvHFExegMW" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script  src="/user_dashboard/js/script.js"></script>
+    </body>
+</html>
