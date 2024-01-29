@@ -21,5 +21,6 @@ public interface UserService {
 //	void sendOtp(String email);
 	void sendOtpService(String email);
 	boolean verifyOtp(String email, String otp);
+	//String forgotPassword(String email);
 
 }

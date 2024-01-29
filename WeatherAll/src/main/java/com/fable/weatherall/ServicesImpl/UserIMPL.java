@@ -39,12 +39,18 @@ public class UserIMPL implements UserService {
     @Override
     public String addUser(UserDTO userDTO) {
         User user = userRepo.findByEmail(userDTO.getEmail());
+        if (user == null) {
+            user = new User();  // Add this line to create a new User object
+        }
+        if(!userDTO.getOtp().equals(user.getOtp()))
+        	return "Otp not matched";
         user.setUsername(userDTO.getUsername());
         user.setEmail(userDTO.getEmail());
         user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         user.setConfirmpassword(passwordEncoder.encode(userDTO.getConfirmpassword()));
         user.setUserType(userDTO.getUserType());
         user.setOtp(userDTO.getOtp());
+        
         userRepo.save(user);
         return user.getUsername();
     }
@@ -196,6 +202,12 @@ public class UserIMPL implements UserService {
 		 }
 		return false;
 	}
+
+//	@Override
+//	public String forgotPassword(String email) {
+//		User user=userRepo.findByEmail(email);
+//		return null;
+//	}
 
 }
 

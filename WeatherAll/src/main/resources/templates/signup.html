@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Signup</title>
 
-        <style>
+            <style>
         body {
             min-height: 100vh;
             background-image: url('/Signup/signup.jpg');
@@ -53,10 +53,10 @@
             font-size: x-large;
         }
 
-        form {
-            height: 550px;
+        .form {
+            height: 480px;
             max-width: 450px;
-            margin: 0px auto;
+            margin: 0 auto;
             padding: 20px;
             backdrop-filter: blur(80px);
             border: 2px solid var(--primary-color);
@@ -77,9 +77,33 @@
             box-sizing: border-box;
         }
 
+        #otpInputField {
+            display: flex;
+            justify-content: space-between;
+        }
+         .form {
+            /* ... (Your existing styles) ... */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .form input {
+            width: 100%;
+        }
+
+        #otpInputField {
+            width: 100%;
+        }
+
         #otp1 {
             display: flex;
             justify-content: space-between;
+            width: 100%;
+        }
+
+        #otp1 div {
+            width: 48%; /* Adjust as needed */
         }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -97,21 +121,36 @@
     </div>
 
     <h2 style="text-align: center; margin-top: 50px;">Signup</h2>
+    <div class="form">
+        <form id="signup" method="post" autocomplete="off">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
 
-    <form id="signup" method="post" autocomplete="off">
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <div class="form-group">
-            <label>Role</label>
-            <select name="userType" id="userType">
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
+            <div>
+                <label for="confirmpassword">Confirm Password:</label>
+                <input type="password" id="confirmpassword" name="confirmPassword" required>
+            </div>
 
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-        </div>
+            <div id="otpInputField">
+                <label for="otp">Enter OTP:</label>
+                <div id="otp1">
+                    <div><input type="text" id="otp" placeholder="Enter OTP"></div>
+
+                    <div>
+                        <button class="btn btn-primary" type="button" id="verifyOtpButton" style="width: 100px; height: 30px;">Verify OTP</button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" onclick="signup()" class="btn btn-primary" style="display: block; margin: 20px auto 0;">Signup</button>
+        </form>
 
         <div>
             <label for="email">Email:</label>
@@ -119,65 +158,60 @@
         </div>
 
         <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <button class="btn btn-primary" id="generateButton" onclick="sendOtp()" style="width: 100px; height: 30px;">Get OTP</button>
         </div>
-
-        <div>
-            <label for="confirmpassword">Confirm Password:</label>
-            <input type="password" id="confirmpassword" name="confirmPassword" required>
-        </div>
-
-        <div id="otpInputField">
-            <label for="otp">Enter OTP:</label>
-            <div id="otp1">
-                <div><input type="text" id="otp" placeholder="Enter OTP"></div>
-                <div>
-                    <button class="btn btn-primary" id="generateButton" onclick="sendOtp()" style="width: 100px; height: 30px;">Get OTP</button>
-                </div>
-                <div>
-                    <button class="btn btn-primary" type="button" id="verifyOtpButton" style="width: 100px; height: 30px;">Verify OTP</button>
-                </div>
-            </div>
-        </div>
-
-        <button type="submit" onclick="signup()" class="btn btn-primary" style="display: block; margin: 20px auto 0;">Signup</button>
-
-    </form>
+    </div>
+    
 
     <script>
            
-async function signup() {
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmpassword = document.getElementById('confirmpassword').value;
-    const userType = document.getElementById('userType').value;
-    const otp = document.getElementById('otp').value;
+ function signup() {
+    console.log('Inside signup function'); // Add this line to check if the function is called
+
+    const usernameElement = document.getElementById('username');
+    console.log('After getting username element:', usernameElement);
+    const username = usernameElement ? usernameElement.value : '';
+    
+    const emailElement = document.getElementById('email');
+    console.log('After getting email element:', emailElement);
+    const email = emailElement ? emailElement.value : '';
+
+    const passwordElement = document.getElementById('password');
+    console.log('After getting password element:', passwordElement);
+    const password = passwordElement ? passwordElement.value : '';
+
+    const confirmPasswordElement = document.getElementById('confirmpassword');
+    console.log('After getting confirmPassword element:', confirmPasswordElement);
+    const confirmpassword = confirmPasswordElement ? confirmPasswordElement.value : '';
+
+    const userTypeElement = document.getElementById('userType');
+    console.log('After getting userType element:', userTypeElement);
+    const userType = userTypeElement ? userTypeElement.value : '';
+
+    const otpElement = document.getElementById('otp');
+    console.log('After getting otp element:', otpElement);
+    const otp = otpElement ? otpElement.value : '';
+
 
     if (password !== confirmpassword) {
         alert("Passwords do not match");
-        window.location.href = '/signup';
         return;
     }
 
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
     if (!passwordRegex.test(password)) {
         alert("Password should be at least 8 characters long and contain at least one special character and one number");
-        window.location.href = '/signup';
         return;
     }
 
     if (!username || !email || !password || !confirmpassword) {
         alert("Please fill in all fields");
-        window.location.href = '/signup';
         return;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert("Invalid email format");
-        window.location.href = '/signup';
         return;
     }
 
@@ -199,45 +233,38 @@ async function signup() {
         otp: otp
     };
 
-    try {
-        const response = await fetch(registrationEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const responseData = await response.json();
-
-        alert('User ID: ' + responseData);
-        alert('Response: ' + JSON.stringify(responseData));
-
-        if (responseData.status === 'success') {
-            alert('Signup success! Redirecting to login...');
-            // Instead of window.location.href, submit the form
-            document.getElementById('signup').submit();
-        } else {
-            alert('Signup failed: ' + responseData);
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-
+    fetch(registrationEndpoint, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Handle response from backend (data contains user ID or message)
+        alert('User ID: ' + data);
+        // Redirect to login page or another page upon successful signup
+        window.location.href = '/login';
+    })
+    .catch(error => console.error('Error:', error));
 }
 
 document.getElementById('signup').addEventListener('submit', function (event) {
     event.preventDefault();
     signup();
 });
-
-
-
-            
+   
         </script>
         <script> 
       function sendOtp() {
     var userEmail = document.getElementById('email').value;
+
+    // Validate user email (you can add more comprehensive validation)
+    if (!userEmail || !validateEmail(userEmail)) {
+        alert("Please enter a valid email address");
+        return;
+    }
 
     fetch('/sendOtp/' + userEmail, {
         method: 'POST'
@@ -246,18 +273,29 @@ document.getElementById('signup').addEventListener('submit', function (event) {
         if (response.ok) {
             alert("OTP sent successfully");
         } else {
+            // Handle specific HTTP error statuses
+            if (response.status === 404) {
+                alert("User not found");
+            } else {
+                alert("Failed to get OTP. Check console for details.");
+            }
+
             // Log the status and response text for debugging
             console.error('Error:', response.status, response.statusText);
-            alert("Failed to get OTP. Check console for details.");
         }
     })
     .catch(error => {
         console.error('Error:', error);
         alert("Failed to get OTP. Check console for details.");
     });
-
-
 }
+
+// Example email validation function
+function validateEmail(email) {
+    // You can implement a more comprehensive email validation here
+    return /\S+@\S+\.\S+/.test(email);
+}
+
 
 
     function verifyOtp(event) {
@@ -282,7 +320,7 @@ document.getElementById('signup').addEventListener('submit', function (event) {
         .then(response => {
             if (response.ok) {
                 alert("OTP verified successfully");
-                  signup();
+                  //signup();
                 // Redirect or perform additional actions upon successful OTP verification
             } else {
                 alert("Invalid OTP or OTP expired");
