@@ -30,6 +30,10 @@ public class User {
 	private String userType;
 	@Column(name = "otp")
 	private String otp;
+
+	
+
+
 	public String getOtp() {
 		return otp;
 	}
@@ -48,7 +52,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userid=" + userid + ", username=" + username + ", email=" + email + ", password=" + password
-				+ ", confirmpassword=" + confirmpassword + ", userType=" + userType + "]";
+				+ ", confirmpassword=" + confirmpassword + ", userType=" + userType + ", otp=" + otp + "]";
 	}
 
 

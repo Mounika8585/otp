@@ -3,6 +3,7 @@ package com.fable.weatherall.ServicesImpl;
 import java.security.SecureRandom;
 
 
+
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -12,8 +13,10 @@ import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service; // Added this import
+import org.springframework.ui.Model;
 
 import com.fable.weatherall.Admin_User_Entities.User;
 import com.fable.weatherall.DTOs.LoginDTO;
@@ -37,45 +40,45 @@ public class UserIMPL implements UserService {
     private JavaMailSender javaMailSender;
 
     @Override
-    public String addUser(UserDTO userDTO) {
-        User user = userRepo.findByEmail(userDTO.getEmail());
-        if (user == null) {
-            user = new User();  // Add this line to create a new User object
+    public String addUser(User user) {
+        User saved = userRepo.findByEmail(user.getEmail());
+        if (saved == null) {
+        	saved = new User();  // Add this line to create a new User object
         }
-        if(!userDTO.getOtp().equals(user.getOtp()))
+        if(!saved.getOtp().equals(user.getOtp()))
         	return "Otp not matched";
-        user.setUsername(userDTO.getUsername());
-        user.setEmail(userDTO.getEmail());
-        user.setPassword(passwordEncoder.encode(userDTO.getPassword()));
-        user.setConfirmpassword(passwordEncoder.encode(userDTO.getConfirmpassword()));
-        user.setUserType(userDTO.getUserType());
-        user.setOtp(userDTO.getOtp());
+        saved.setUsername(user.getUsername());
+        saved.setEmail(user.getEmail());
+        saved.setPassword(passwordEncoder.encode(user.getPassword()));
+        saved.setConfirmpassword(passwordEncoder.encode(user.getConfirmpassword()));
+        saved.setUserType(user.getUserType());
+        saved.setOtp(user.getOtp());
         
-        userRepo.save(user);
+        userRepo.save(saved);
         return user.getUsername();
     }
     
     @Override
-    public List<String> addMultipleUsers(List<UserDTO> userDTOList) {
+    public List<String> addMultipleUsers(List<User> userList) {
         List<String> addedUsernames = new ArrayList<>();
-        for (UserDTO userDTO : userDTOList) {
-            String username = addUser(userDTO);
+        for (User user : userList) {
+            String username = addUser(user);
             addedUsernames.add(username);
         }
         return addedUsernames;
     }
     
     @Override
-    public String updateUser(int userId, UserDTO userDTO) {
+    public String updateUser(int userId, User user) {
         Optional<User> optionalUser = userRepo.findById(userId);
 
         if (optionalUser.isPresent()) {
             User existingUser = optionalUser.get();
             
             // Update user information
-            existingUser.setUsername(userDTO.getUsername());
-            existingUser.setEmail(userDTO.getEmail());
-            existingUser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+            existingUser.setUsername(user.getUsername());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
 
             userRepo.save(existingUser);
 
@@ -112,50 +115,7 @@ public class UserIMPL implements UserService {
         
     }
     
- // Inside UserIMPL.java
-  
-//    public String generateOtp() {
-//        Random random = new Random();
-//        int otpNumber = 100000 + random.nextInt(900000);
-//        return String.valueOf(otpNumber);
-//    }
-
-//    @Override
-//    public void sendOtp(String email) {
-//    	 User user = userRepo.findByEmail(email);
-//         if (user != null) {
-//             String otp = generateOtp();
-//             user.setOtp(otp);
-//             user.setOtpGeneratedTime(LocalDateTime.now());
-//             userRepo.save(user);
-//
-//             // Use JavaMailSender to send an email with the OTP
-//             SimpleMailMessage message = new SimpleMailMessage();
-//             message.setTo(email);
-//             message.setSubject("Your OTP for Fable WeatherAll");
-//             message.setText("Your OTP is: " + otp);
-//             javaMailSender.send(message);
-//         }
-//    }
-
-//    @Override
-//    public boolean verifyOtp(String email, String otp) {
-//        User user = userRepo.findByEmail(email);
-//        if (user != null && user.getOtp() != null && user.getOtp().equals(otp)) {
-//            LocalDateTime otpGeneratedTime = user.getOtpGeneratedTime();
-//            LocalDateTime currentDateTime = LocalDateTime.now();
-//            Duration duration = Duration.between(otpGeneratedTime, currentDateTime);
-//            long minutesElapsed = duration.toMinutes();
-//            // Set a time limit for OTP verification (e.g., 10 minutes)
-//            if (minutesElapsed <= 10) {
-//                user.setOtp(null);
-//                user.setOtpGeneratedTime(null);
-//                userRepo.save(user);
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+ 
 
 	public void sendOtpService(String email) {
 		String otp=generateOtp();
@@ -203,12 +163,23 @@ public class UserIMPL implements UserService {
 		return false;
 	}
 
-//	@Override
-//	public String forgotPassword(String email) {
-//		User user=userRepo.findByEmail(email);
-//		return null;
-//	}
-
+	@Override
+	public int resetPassword(User user) {
+		User user1 = userRepo.findByEmail(user.getEmail());
+		BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+		if (user1==null) {
+			return 1;
+		}
+		 if (user1.getOtp() .equals(user.getOtp())){
+			 String password=encoder.encode(user.getPassword());
+			 user1.setPassword(password);
+			 userRepo.save(user1);
+			 return 2;
+		 }
+		 return 3;
+		 
+	}
+	
 }
 
 

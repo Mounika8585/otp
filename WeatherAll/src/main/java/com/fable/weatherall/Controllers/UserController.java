@@ -1,9 +1,12 @@
 package com.fable.weatherall.Controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,8 @@ import com.fable.weatherall.DTOs.VerifyOtpDTO;
 import com.fable.weatherall.Responses.LoginResponse;
 import com.fable.weatherall.Services.UserService;
 
+
+
 @RestController
 @CrossOrigin
 public class UserController {
@@ -28,9 +33,9 @@ public class UserController {
 	
 	
 	@PostMapping(path = "/save")
-	public String saveUser(@RequestBody UserDTO userDTO) {
+	public String saveUser(@RequestBody User user) {
 	
-		String id = userService.addUser(userDTO);
+		String id = userService.addUser(user);
 		return id;
 	}
 	
@@ -40,6 +45,7 @@ public class UserController {
 		LoginResponse loginResponse = userService.loginUser(loginDTO);
 		return ResponseEntity.ok(loginResponse);
 	}
+	
 
 	@PostMapping("/verify-otp")
 	public ResponseEntity<String> verifyOtp(@RequestBody VerifyOtpDTO verifyOtpDTO) {
@@ -59,8 +65,8 @@ public class UserController {
 		return "otp send successfully";
 	}
 	
-//	@PutMapping("/forgot-passord")
-//	public ResponseEntity<String> forgotPassword(@RequestParam String email){
-//		return new ResponseEntity<>(userService.forgotPassword(email),HttpStatus.OK);
-//	}
-}
+
+	
+	}
+	
+

@@ -244,21 +244,14 @@
              
         <div class="form-group">
             <p class="forgot-password">
-                <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                <a href="forgetPassword" id="forgotPasswordLink">Forgot Password?</a>
             </p>
         </div>
 
         </form>
     </div>
 
-    <div class="password-reset-popup" id="passwordResetPopup">
-        <div class="password-reset-content">
-            <h2>Password Reset</h2>
-            <input type="email" placeholder="Enter your email" id="resetEmail">
-            <button onclick="submitEmail()">Submit</button>
-            <button class="close-popup" onclick="closePasswordResetPopup()">Close</button>
-        </div>
-    </div>
+    
 
     <!-- Bootstrap JavaScript Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -278,7 +271,7 @@
 
     /*popup */
     // Function to open password reset pop-up
-function openPasswordResetPopup() {
+/*function openPasswordResetPopup() {
     document.getElementById("passwordResetPopup").style.display = "block";
 }
 
@@ -303,7 +296,7 @@ document.getElementById("forgotPasswordLink").addEventListener("click", function
 
     var loginContainer = document.getElementById("loginContainer");
     oginContainer.style.display = "none";
-});
+});*/
 
 //-=======================================
 	function login() {
@@ -328,10 +321,8 @@ document.getElementById("forgotPasswordLink").addEventListener("click", function
             })
             .then(response => response.json())
             .then(data => {
-                // Handle response from backend (data contains login status)
                 alert(data.message);
                 if(data.status) {
-                    // Redirect to dashboard or another page upon successful login
                     const dashboardURL = role === 'admin' ? '/html/index.html' : '/user_dashboard';
                		window.location.href = dashboardURL;
                     
@@ -343,18 +334,13 @@ document.getElementById("forgotPasswordLink").addEventListener("click", function
                 }
             })
             .catch(error => console.error('Error:', error));
-        }
-        
+        }      
         document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
-             // Manually trigger the login function
+            event.preventDefault(); 
              login();
         });
-
-
-    </script>
+   </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
-
 

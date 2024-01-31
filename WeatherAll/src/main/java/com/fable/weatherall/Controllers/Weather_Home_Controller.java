@@ -37,4 +37,9 @@ public class Weather_Home_Controller {
         return "about";
     }
 	
+	@GetMapping("/forgetPassword")
+	public String forgetPassword() {
+        return "forgetPassword";
+    }
+	
 }

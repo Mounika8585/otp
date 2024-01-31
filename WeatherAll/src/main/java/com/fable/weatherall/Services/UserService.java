@@ -8,19 +8,20 @@ import com.fable.weatherall.DTOs.LoginDTO;
 import com.fable.weatherall.DTOs.UserDTO;
 import com.fable.weatherall.Responses.LoginResponse;
 
+import ch.qos.logback.core.model.Model;
+
 
 public interface UserService {
 
-	String addUser(UserDTO userDTO);
+	String addUser(User user);
 	LoginResponse loginUser(LoginDTO loginDTO);
 	 List<User> findAllUsers(); 
-	 List<String> addMultipleUsers(List<UserDTO> userDTOList);
+	 List<String> addMultipleUsers(List<User> userList);
 	 
-	 String updateUser(int userId, UserDTO userDTO);
+	 String updateUser(int userId, User user);
 //	 boolean verifyOtp(String email, String otp);
 //	void sendOtp(String email);
 	void sendOtpService(String email);
 	boolean verifyOtp(String email, String otp);
-	//String forgotPassword(String email);
-
+	int resetPassword(User user);
 }
